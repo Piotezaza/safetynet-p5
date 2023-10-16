@@ -59,6 +59,9 @@ public class JsonService {
         return dataObject.getPersons();
     }
 
+    // TODO : regarder pour "ranger" les fonctions, genre quand ça calcule ça va dans les Services
+    // PAS POSSIBLE -> savePerson utilise getPerson et dataObject est private donc on peut pas l'appeler en dehors pour avoir le searchPerson
+
     public Person getPerson(String firstName, String lastName) {
         List<Person> persons = getPersons();
         List<Person> foundPersons = persons.stream().filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName)).toList();
