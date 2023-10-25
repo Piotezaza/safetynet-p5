@@ -47,7 +47,8 @@ public class JsonServiceTestIntegration {
     }
 
     // TODO : INTEGRATION, il faut mocker DataObject (pas de when) --- https://www.baeldung.com/spring-boot-testing#mocking-with-mockbean
-    @Test
+   /*
+   @Test
     void getFirestationsByStationCheckIfReturnGoodSize() {
         // Quand je cherche la station 3, doit me retourner deux firestations
         List<Firestation> firestations = jsonService.getFirestations();
@@ -55,7 +56,7 @@ public class JsonServiceTestIntegration {
 
         //assertEquals(EXPECTED, ACTUAL);
         //assertEquals(EXPECTED, ACTUAL);
-    }
+    }*/
 
 //    @Test
 //    void getFirestationByAddressCheckIfReturnTheGoodOne() {

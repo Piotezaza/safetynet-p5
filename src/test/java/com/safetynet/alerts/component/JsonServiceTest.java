@@ -72,34 +72,35 @@ class JsonServiceTest {
         assertEquals(personList.size(), this.dataObject.getPersons().size());
     }
 
-    @Test
-    void getPersonByFirstNameAndLastNameCheckIfReturnTheGoodOne() {
-        when(this.jsonService.getPerson(anyString(), anyString())).thenReturn(this.dataObject.getPersons().get(0));
-
-        assertEquals(this.dataObject.getPersons().get(0).getFirstName(), this.jsonService.getPerson("firstName1", "lastName1").getFirstName());
-        assertEquals(this.dataObject.getPersons().get(0).getLastName(), this.jsonService.getPerson("firstName1", "lastName1").getLastName());
-    }
-
-    @Test
-    void savePersonShouldReturnTrue() {
-        when(this.jsonService.savePerson(any(Person.class))).thenReturn(true);
-
-        assertEquals(true, this.jsonService.savePerson(this.dataObject.getPersons().get(0)));
-    }
-
-    @Test
-    void updatePersonShouldReturnTrue() {
-        when(this.jsonService.updatePerson(any(Person.class))).thenReturn(true);
-
-        assertEquals(true, this.jsonService.updatePerson(this.dataObject.getPersons().get(0)));
-    }
-
-    @Test
-    void removePersonShouldReturnTrue() {
-        when(this.jsonService.removePerson(anyString(), anyString())).thenReturn(true);
-
-        assertEquals(true, this.jsonService.removePerson(anyString(), anyString()));
-    }
+//
+//    @Test
+//    void getPersonByFirstNameAndLastNameCheckIfReturnTheGoodOne() {
+//        when(this.jsonService.getPerson(anyString(), anyString())).thenReturn(this.dataObject.getPersons().get(0));
+//
+//        assertEquals(this.dataObject.getPersons().get(0).getFirstName(), this.jsonService.getPerson("firstName1", "lastName1").getFirstName());
+//        assertEquals(this.dataObject.getPersons().get(0).getLastName(), this.jsonService.getPerson("firstName1", "lastName1").getLastName());
+//    }
+//
+//    @Test
+//    void savePersonShouldReturnTrue() {
+//        when(this.jsonService.savePerson(any(Person.class))).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.savePerson(this.dataObject.getPersons().get(0)));
+//    }
+//
+//    @Test
+//    void updatePersonShouldReturnTrue() {
+//        when(this.jsonService.updatePerson(any(Person.class))).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.updatePerson(this.dataObject.getPersons().get(0)));
+//    }
+//
+//    @Test
+//    void removePersonShouldReturnTrue() {
+//        when(this.jsonService.removePerson(anyString(), anyString())).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.removePerson(anyString(), anyString()));
+//    }
 
 //     ______ _____ _____  ______  _____ _______    _______ _____ ____  _   _
 //    |  ____|_   _|  __ \|  ____|/ ____|__   __|/\|__   __|_   _/ __ \| \ | |
@@ -116,42 +117,42 @@ class JsonServiceTest {
         assertEquals(personList.size(), this.dataObject.getFirestations().size());
     }
 
-    @Test
-    void getFirestationByStationAndAddressCheckIfReturnTheGoodOne() {
-        when(this.jsonService.getFirestation(anyString(), anyString())).thenReturn(this.dataObject.getFirestations().get(0));
-
-        assertEquals(this.dataObject.getFirestations().get(0).getStation(), this.jsonService.getFirestation("firestation1", "address1").getStation());
-        assertEquals(this.dataObject.getFirestations().get(0).getAddress(), this.jsonService.getFirestation("firestation1", "address1").getAddress());
-    }
-
-
-    @Test
-    void saveFirestationShouldReturnTrue() {
-        when(this.jsonService.saveFirestation(any(Firestation.class))).thenReturn(true);
-
-        assertEquals(true, this.jsonService.saveFirestation(this.dataObject.getFirestations().get(0)));
-    }
-
-    @Test
-    void updateFirestationShouldReturnTrue() {
-        when(this.jsonService.updateFirestation(any(Firestation.class))).thenReturn(true);
-
-        assertEquals(true, this.jsonService.updateFirestation(this.dataObject.getFirestations().get(0)));
-    }
-
-    @Test
-    void removeFirestationFromStationShouldReturnTrue() {
-        when(this.jsonService.removeFirestationFromStation(anyString())).thenReturn(true);
-
-        assertEquals(true, this.jsonService.removeFirestationFromStation(anyString()));
-    }
-
-    @Test
-    void removeFirestationFromAddressShouldReturnTrue() {
-        when(this.jsonService.removeFirestationFromAddress(anyString())).thenReturn(true);
-
-        assertEquals(true, this.jsonService.removeFirestationFromAddress(anyString()));
-    }
+//    @Test
+//    void getFirestationByStationAndAddressCheckIfReturnTheGoodOne() {
+//        when(this.jsonService.getFirestation(anyString(), anyString())).thenReturn(this.dataObject.getFirestations().get(0));
+//
+//        assertEquals(this.dataObject.getFirestations().get(0).getStation(), this.jsonService.getFirestation("firestation1", "address1").getStation());
+//        assertEquals(this.dataObject.getFirestations().get(0).getAddress(), this.jsonService.getFirestation("firestation1", "address1").getAddress());
+//    }
+//
+//
+//    @Test
+//    void saveFirestationShouldReturnTrue() {
+//        when(this.jsonService.saveFirestation(any(Firestation.class))).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.saveFirestation(this.dataObject.getFirestations().get(0)));
+//    }
+//
+//    @Test
+//    void updateFirestationShouldReturnTrue() {
+//        when(this.jsonService.updateFirestation(any(Firestation.class))).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.updateFirestation(this.dataObject.getFirestations().get(0)));
+//    }
+//
+//    @Test
+//    void removeFirestationFromStationShouldReturnTrue() {
+//        when(this.jsonService.removeFirestationFromStation(anyString())).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.removeFirestationFromStation(anyString()));
+//    }
+//
+//    @Test
+//    void removeFirestationFromAddressShouldReturnTrue() {
+//        when(this.jsonService.removeFirestationFromAddress(anyString())).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.removeFirestationFromAddress(anyString()));
+//    }
 
 
 //     __  __ ______ _____ _____ _____          _      _____  ______ _____ ____  _____  _____
@@ -169,32 +170,32 @@ class JsonServiceTest {
         assertEquals(personList.size(), this.dataObject.getMedicalRecords().size());
     }
 
-    @Test
-    void getMedicalRecordByFirstNameAndLastNameCheckIfReturnTheGoodOne() {
-        when(this.jsonService.getMedicalRecord(anyString(), anyString())).thenReturn(this.dataObject.getMedicalRecords().get(0));
-
-        assertEquals(this.dataObject.getMedicalRecords().get(0).getFirstName(), this.jsonService.getMedicalRecord("firstName1", "lastName1").getFirstName());
-        assertEquals(this.dataObject.getMedicalRecords().get(0).getLastName(), this.jsonService.getMedicalRecord("firstName1", "lastName1").getLastName());
-    }
-
-    @Test
-    void saveMedicalRecordShouldReturnTrue() {
-        when(this.jsonService.saveMedicalRecord(any(MedicalRecord.class))).thenReturn(true);
-
-        assertEquals(true, this.jsonService.saveMedicalRecord(this.dataObject.getMedicalRecords().get(0)));
-    }
-
-    @Test
-    void updateMedicalRecordShouldReturnTrue() {
-        when(this.jsonService.updateMedicalRecord(any(MedicalRecord.class))).thenReturn(true);
-
-        assertEquals(true, this.jsonService.updateMedicalRecord(this.dataObject.getMedicalRecords().get(0)));
-    }
-
-    @Test
-    void removeMedicalRecordShouldReturnTrue() {
-        when(this.jsonService.removeMedicalRecord(anyString(), anyString())).thenReturn(true);
-
-        assertEquals(true, this.jsonService.removeMedicalRecord(anyString(), anyString()));
-    }
+//    @Test
+//    void getMedicalRecordByFirstNameAndLastNameCheckIfReturnTheGoodOne() {
+//        when(this.jsonService.getMedicalRecord(anyString(), anyString())).thenReturn(this.dataObject.getMedicalRecords().get(0));
+//
+//        assertEquals(this.dataObject.getMedicalRecords().get(0).getFirstName(), this.jsonService.getMedicalRecord("firstName1", "lastName1").getFirstName());
+//        assertEquals(this.dataObject.getMedicalRecords().get(0).getLastName(), this.jsonService.getMedicalRecord("firstName1", "lastName1").getLastName());
+//    }
+//
+//    @Test
+//    void saveMedicalRecordShouldReturnTrue() {
+//        when(this.jsonService.saveMedicalRecord(any(MedicalRecord.class))).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.saveMedicalRecord(this.dataObject.getMedicalRecords().get(0)));
+//    }
+//
+//    @Test
+//    void updateMedicalRecordShouldReturnTrue() {
+//        when(this.jsonService.updateMedicalRecord(any(MedicalRecord.class))).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.updateMedicalRecord(this.dataObject.getMedicalRecords().get(0)));
+//    }
+//
+//    @Test
+//    void removeMedicalRecordShouldReturnTrue() {
+//        when(this.jsonService.removeMedicalRecord(anyString(), anyString())).thenReturn(true);
+//
+//        assertEquals(true, this.jsonService.removeMedicalRecord(anyString(), anyString()));
+//    }
 }
