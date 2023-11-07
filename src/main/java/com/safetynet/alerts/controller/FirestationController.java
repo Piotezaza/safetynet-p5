@@ -3,6 +3,7 @@ package com.safetynet.alerts.controller;
 import com.safetynet.alerts.component.JsonService;
 import com.safetynet.alerts.model.dao.Firestation;
 import com.safetynet.alerts.service.IFirestationService;
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class FirestationController {
     }
 
     @PostMapping("/firestation")
-    public Firestation createFirestation(@RequestBody Firestation firestation) {
+    public Firestation createFirestation(@RequestBody @Valid Firestation firestation) {
         logger.info("Endpoint Firestation : createFirestation | ️ send : Firestation firestation \"" + firestation + "\" - return : Firestation");
         firestationService.saveFirestation(firestation);
         return firestation;

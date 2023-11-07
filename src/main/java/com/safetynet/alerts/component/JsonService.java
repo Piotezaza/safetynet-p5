@@ -10,6 +10,7 @@ import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -20,12 +21,13 @@ import java.util.List;
 @Service
 public class JsonService {
 
-    private final String path = "src/main/resources/data.json";
+    @Value("${cheminFichier}")
+    private String path;
 
     @Autowired
     private ObjectMapper objectMapper;
 
-    private static DataObject dataObject;
+    private DataObject dataObject;
 
     private Logger logger = LogManager.getLogger(JsonService.class);
 

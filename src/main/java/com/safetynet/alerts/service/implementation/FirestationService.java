@@ -3,12 +3,14 @@ package com.safetynet.alerts.service.implementation;
 import com.safetynet.alerts.component.JsonService;
 import com.safetynet.alerts.model.dao.Firestation;
 import com.safetynet.alerts.service.IFirestationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class FirestationService implements IFirestationService {
 
     @Autowired

@@ -25,6 +25,7 @@ public class URLController {
         logger.info("URL ChildAlert | ️ send : String address \"" + address + "\" - return : Map<String, List<ChildAlertURL>>");
         return urlService.childAlert(address);
     }
+
     @GetMapping("/firestation")
     public FirestationURL firestation(@RequestParam String stationNumber) {
         logger.info("URL firestation | ️ send : String stationNumber \"" + stationNumber + "\" - return : FirestationURL");

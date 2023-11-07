@@ -84,7 +84,7 @@ public class DataObjectDTO {
 
                             if(age <= 18){
                                 person.setPhone(null);
-                                houseDTO.getValue().getChildren().add(person); // TODO : cohérence avec PersonContactInfoDTO et PersonDTO ???
+                                houseDTO.getValue().getChildren().add(person);
                                 houseDTO.getValue().getAdults().remove(person);
                             }
                             personFound = true;

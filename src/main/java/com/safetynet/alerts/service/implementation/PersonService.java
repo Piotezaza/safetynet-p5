@@ -1,6 +1,7 @@
 package com.safetynet.alerts.service.implementation;
 
 import com.safetynet.alerts.component.JsonService;
+import com.safetynet.alerts.model.dao.Firestation;
 import com.safetynet.alerts.model.dao.Person;
 import com.safetynet.alerts.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,13 +73,16 @@ public class PersonService implements IPersonService {
     public Boolean updatePerson(Person person) {
         List<Person> personList = jsonService.getPersons();
 
-        for(Person person1 : personList) {
-            if(person.getFirstName().equals(person1.getFirstName()) && person.getLastName().equals(person1.getLastName())) {
-                // TODO MAJ ses données
+        for (Person person1 : personList) {
+            if (person.getFirstName().equals(person1.getFirstName()) && person.getLastName().equals(person1.getLastName())) {
+                person1.setAddress(person.getAddress());
+                person1.setCity(person.getCity());
+                person1.setZip(person.getZip());
+                person1.setPhone(person.getPhone());
+                person1.setEmail(person.getEmail());
                 break;
             }
         }
-
         return jsonService.savePersons(personList);
     }
 
