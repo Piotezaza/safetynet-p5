@@ -1,6 +1,7 @@
 package com.safetynet.alerts.service.implementation;
 
 import com.safetynet.alerts.component.JsonService;
+import com.safetynet.alerts.model.dao.Firestation;
 import com.safetynet.alerts.model.dao.MedicalRecord;
 import com.safetynet.alerts.model.dao.Person;
 import com.safetynet.alerts.service.IMedicalRecordService;
@@ -51,7 +52,7 @@ public class MedicalRecordService implements IMedicalRecordService {
      * @return True if save is ok, false if save is ko
      */
     @Override
-    public Boolean saveMedicalRecord(MedicalRecord medicalRecord) {
+    public Boolean saveMedicalRecord(MedicalRecord medicalRecord) throws RuntimeException {
         MedicalRecord searchMedicalRecord = getMedicalRecord(medicalRecord.getFirstName(), medicalRecord.getLastName());
 
         if (searchMedicalRecord == null) {
@@ -59,7 +60,7 @@ public class MedicalRecordService implements IMedicalRecordService {
             medicalRecords.add(medicalRecord);
             return jsonService.saveMedicalRecords(medicalRecords);
         } else {
-            return false;
+            throw new RuntimeException("Already in database");
         }
     }
 
@@ -71,19 +72,19 @@ public class MedicalRecordService implements IMedicalRecordService {
      */
     @Override
     public Boolean updateMedicalRecord(MedicalRecord medicalRecord) {
-        MedicalRecord foundMedicalRecord = getMedicalRecord(medicalRecord.getFirstName(), medicalRecord.getLastName());
+        List<MedicalRecord> medicalRecordList = jsonService.getMedicalRecords();
 
-        if (foundMedicalRecord != null) {
-            Boolean removed = removeMedicalRecord(medicalRecord.getFirstName(), medicalRecord.getLastName());
-            if (removed) {
-                saveMedicalRecord(medicalRecord);
-                return true;
-            } else {
-                return false;
+        for (MedicalRecord medicalRecord1 : medicalRecordList) {
+            if (medicalRecord.getFirstName().equals(medicalRecord1.getFirstName()) && medicalRecord.getLastName().equals(medicalRecord1.getLastName())) {
+                medicalRecord1.setFirstName(medicalRecord.getFirstName());
+                medicalRecord1.setLastName(medicalRecord.getLastName());
+                medicalRecord1.setBirthdate(medicalRecord.getBirthdate());
+                medicalRecord1.setMedications(medicalRecord.getMedications());
+                medicalRecord1.setAllergies(medicalRecord.getAllergies());
+                break;
             }
-        } else {
-            return false;
         }
+        return jsonService.saveMedicalRecords(medicalRecordList);
     }
 
     /**
@@ -97,12 +98,12 @@ public class MedicalRecordService implements IMedicalRecordService {
     public Boolean removeMedicalRecord(String firstName, String lastName){
         List<MedicalRecord> medicalRecordList = jsonService.getMedicalRecords();
 
-        Integer indice = 0;
+        Integer indice = -1;
         for(MedicalRecord medicalRecord1 : medicalRecordList) {
+            indice++;
             if(firstName.equals(medicalRecord1.getFirstName()) && lastName.equals(medicalRecord1.getLastName())) {
                 break;
             }
-            indice++;
         }
 
         medicalRecordList.remove(indice);

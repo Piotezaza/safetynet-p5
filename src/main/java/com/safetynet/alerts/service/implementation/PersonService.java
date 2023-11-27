@@ -59,7 +59,7 @@ public class PersonService implements IPersonService {
             persons.add(person);
             return jsonService.savePersons(persons);
         } else {
-            return false;
+            throw new RuntimeException("Already in database");
         }
     }
 

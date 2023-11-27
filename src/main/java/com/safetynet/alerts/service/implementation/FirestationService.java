@@ -3,7 +3,9 @@ package com.safetynet.alerts.service.implementation;
 import com.safetynet.alerts.component.JsonService;
 import com.safetynet.alerts.model.dao.Firestation;
 import com.safetynet.alerts.service.IFirestationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +53,7 @@ public class FirestationService implements IFirestationService {
      * @param station
      * @return All Firestations of the Station
      */
-    private List<Firestation> getFirestationsByStation(String station) {
+    public List<Firestation> getFirestationsByStation(String station) {
         List<Firestation> firestations = jsonService.getFirestations();
         List<Firestation> foundStations = firestations.stream().filter(firestation -> firestation.getStation().equals(station)).toList();
         return foundStations;
@@ -63,7 +65,7 @@ public class FirestationService implements IFirestationService {
      * @param address
      * @return All Firestations of the Address
      */
-    private List<Firestation> getFirestationsByAddress(String address) {
+    public List<Firestation> getFirestationsByAddress(String address) {
         List<Firestation> firestations = jsonService.getFirestations();
         List<Firestation> foundStations = firestations.stream().filter(firestation -> firestation.getAddress().equals(address)).toList();
         return foundStations;
@@ -76,7 +78,7 @@ public class FirestationService implements IFirestationService {
      * @return True if save is ok, false if save is ko
      */
     @Override
-    public Boolean saveFirestation(Firestation firestation) {
+    public Boolean saveFirestation(@Valid @NotNull Firestation firestation) throws RuntimeException {
         Firestation searchFirestation = getFirestation(firestation.getStation(), firestation.getAddress());
 
         if (searchFirestation == null) {
@@ -84,7 +86,7 @@ public class FirestationService implements IFirestationService {
             firestations.add(firestation);
             return jsonService.saveFirestations(firestations);
         } else {
-            return false;
+            throw new RuntimeException("Already in database");
         }
     }
 
