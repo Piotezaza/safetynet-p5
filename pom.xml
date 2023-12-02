@@ -105,6 +105,9 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*.Lombok.java</exclude>
+<!--                        <exclude>**/config/**</exclude>-->
+<!--                        <exclude>**/model/**</exclude>-->
+<!--                        <exclude>**/item/**</exclude>-->
                     </excludes>
                 </configuration>
                 <executions>

@@ -22,17 +22,21 @@ import java.util.List;
 public class JsonService {
 
     @Value("${cheminFichier}")
-    private String path;
+    private final String path;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
-    private DataObject dataObject;
+    protected final DataObject dataObject;
 
     private Logger logger = LogManager.getLogger(JsonService.class);
 
-    @PostConstruct
-    protected void getData() throws IOException {
+    @Autowired
+    public JsonService(@Value("${cheminFichier}") String cheminFichier, ObjectMapper mapperObject) throws IOException {
+
+        this.objectMapper = mapperObject;
+        this.path = cheminFichier;
+
         logger.info("Get data from json file");
         dataObject = objectMapper.readValue(Paths.get(path).toFile(), DataObject.class);
     }

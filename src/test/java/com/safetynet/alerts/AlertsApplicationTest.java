@@ -14,4 +14,9 @@ public class AlertsApplicationTest {
 	void contextLoader() {
 
 	}
+
+	@Test
+	public void main() {
+		AlertsApplication.main(new String[] {});
+	}
 }

@@ -13,6 +13,6 @@ public class AlertsApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Bijour 👀");
+		System.out.println("SafetyNet Alerts started.");
 	}
 }
